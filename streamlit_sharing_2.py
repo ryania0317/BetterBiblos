@@ -9,7 +9,7 @@ def install_and_import(package):
         globals()[package] = importlib.import_module(package)
 
 
-install_and_import('ghseetsdb')
+install_and_import('gsheetsdb')
 
 #import pip
 #pip install ghseetsdb
