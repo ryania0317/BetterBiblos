@@ -1,3 +1,5 @@
+install ghseetsdb
+
 import streamlit as st
 import pandas as pd
 from gsheetsdb import connect
