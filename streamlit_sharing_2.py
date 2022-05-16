@@ -1,4 +1,5 @@
-!pip install ghseetsdb
+import pip
+pip install ghseetsdb
 
 import streamlit as st
 import pandas as pd
