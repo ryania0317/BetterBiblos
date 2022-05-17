@@ -11,6 +11,7 @@ install_and_import('gsheetsdb')
 
 import streamlit as st
 import pandas as pd
+import numpy as np
 from gsheetsdb import connect
 
 st.title("KJV Bible")
@@ -20,7 +21,8 @@ rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
 df = pd.DataFrame(rows)
 
 books = df['book'].unique()
-books = books.insert(0, 'All')
+books=np.insert(books,0,'All')
+#books = books.insert(0, 'All')
 
 book_choice = st.sidebar.multiselect('Book:', books)
 chapter = df["chapter"].loc[df["book"].isin([book_choice])].unique()
