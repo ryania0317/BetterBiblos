@@ -16,7 +16,7 @@ from gsheetsdb import connect
 from collections import Counter
 
 st.title("KJV Bible")
-st.wrtie("Prototype Under Construction")
+st.write("Prototype Under Construction")
 gsheet_url = "https://docs.google.com/spreadsheets/d/1pjYzEl-Wlr2X40ECZwesX0_paxLTyssNKFjm1rHbR0U/edit?usp=sharing"
 conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
@@ -51,8 +51,8 @@ verse_number_choice = [all_verses if 'All' in verse_number_choice else verse_num
 output = df.loc[(df['book'].isin([book_choice])) & (df['chapter'].isin([chapter_choice])) & (df['verse_number'].isin([verse_number_choice]))]
 
 
-st.write(book_choice)
-st.write(chapter_choice)
-st.write(verse_number_choice)
+#st.write(book_choice)
+#st.write(chapter_choice)
+#st.write(verse_number_choice)
 
 st.write('Results:', output)
