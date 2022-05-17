@@ -25,7 +25,7 @@ books = df['book'].unique()
 #output = df
 
 book_choice = st.sidebar.selectbox('Which book(s)?:', books)
-chapter = df["chapter"].loc[df["book"] == book_choice]
+chapter = df["chapter"].loc[df["book"] == book_choice].unique()
 chapter_choice = st.sidebar.selectbox('', chapter)
 verse_number = df["verse_number"].loc[df["chapter"] == chapter_choice]
 verse_number_choice = st.sidebar.selectbox('', verse_number)
