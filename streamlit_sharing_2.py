@@ -32,7 +32,7 @@ book_choice = (book_choice)
 
 #st.write(book_choice)
 chapter = df["chapter"].loc[df["book"].isin(book_choice)].unique()
-chapter = df["chapter"]
+chapter = df["chapter"].unique()
 chapter_all=np.insert(chapter.astype(str),0,'All')
 #st.write(chapter)
 chapter_choice = st.sidebar.multiselect('Chapter', chapter_all, default='All')
