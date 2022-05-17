@@ -7,17 +7,11 @@ def install_and_import(package):
         pip.main(['install', package])
     finally:
         globals()[package] = importlib.import_module(package)
-
-
 install_and_import('gsheetsdb')
-
-#import pip
-#pip install ghseetsdb
 
 import streamlit as st
 import pandas as pd
 from gsheetsdb import connect
-
 
 st.title("KJV Bible")
 gsheet_url = "https://docs.google.com/spreadsheets/d/1pjYzEl-Wlr2X40ECZwesX0_paxLTyssNKFjm1rHbR0U/edit?usp=sharing"
@@ -34,15 +28,4 @@ book_choice = st.sidebar.selectbox('Which book(s)?:', books)
 chapter_choice = st.sidebar.selectbox('', chapter)
 verse_choice = st.sidebar.selectbox('', verse_number)
 
-
 st.write('Results:', output)
-
-
-
-
-
-
-
-st.write(df_gsheet)
-
-
