@@ -25,8 +25,6 @@ conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
 df = pd.DataFrame(rows)
 
-@st.cache
-
 books = df['book'].drop_duplicates()
 chapter = df['chapter']
 verse_number = df['verse_number']
