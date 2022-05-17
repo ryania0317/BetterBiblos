@@ -16,6 +16,7 @@ from gsheetsdb import connect
 from collections import Counter
 
 st.title("KJV Bible")
+st.wrtie("Prototype Under Construction")
 gsheet_url = "https://docs.google.com/spreadsheets/d/1pjYzEl-Wlr2X40ECZwesX0_paxLTyssNKFjm1rHbR0U/edit?usp=sharing"
 conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
