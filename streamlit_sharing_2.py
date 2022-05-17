@@ -30,6 +30,6 @@ chapter_choice = st.sidebar.multiselect('Chapter', chapter)
 verse_number = df["verse_number"].loc[df["chapter"].isin([chapter_choice])].unique()
 verse_number_choice = st.sidebar.multiselect('Verse', verse_number)
 
-output = df.loc[(df['book']==book_choice) & (df['chapter']==chapter_choice) & (df['verse_number']== verse_number_choice)]
+output = df.loc[(df['book'].isin([book_choice])) & (df['chapter'].isin([chapter_choice])) & (df['verse_number'].isin([verse_number_choice]))]
 
 st.write('Results:', output)
