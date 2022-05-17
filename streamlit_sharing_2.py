@@ -25,7 +25,7 @@ books = df['book'].unique()
 #output = df
 
 book_choice = st.sidebar.multiselect('Book:', books)
-chapter = df["chapter"].loc[df["book"] in book_choice].unique()
+chapter = df["chapter"].loc[df["book"].isin([book_choice])].unique()
 chapter_choice = st.sidebar.multiselect('Chapter', chapter)
 verse_number = df["verse_number"].loc[df["chapter"] == chapter_choice].unique()
 verse_number_choice = st.sidebar.multiselect('Verse', verse_number)
