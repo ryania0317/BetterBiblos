@@ -25,7 +25,9 @@ verse_number = df['verse_number']
 output = df
 
 book_choice = st.sidebar.selectbox('Which book(s)?:', books)
+chapter = df["chapter"].loc[df["book"] == book_choice]
 chapter_choice = st.sidebar.selectbox('', chapter)
-verse_choice = st.sidebar.selectbox('', verse_number)
+verse_number = df["verse_number"].loc[df["chapter"] == chapter_choice]
+verse_number_choice = st.sidebar.selectbox('', verse_number)
 
 st.write('Results:', output)
