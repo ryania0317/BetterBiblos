@@ -25,7 +25,7 @@ books = df['book'].unique()
 all_books = books
 books=np.insert(books,0,'All')
 #books = books.insert(0, 'All')
-
+#
 book_choice = st.sidebar.multiselect('Book:', books, default='All')
 book_choice = [all_books if 'All' in book_choice else book_choice for all_books in all_books]
 book_choice = (book_choice)
