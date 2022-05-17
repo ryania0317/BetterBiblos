@@ -19,7 +19,7 @@ conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
 df = pd.DataFrame(rows)
 
-books = df['book'].drop_duplicates()
+books = df['book'].unique()
 chapter = df['chapter']
 verse_number = df['verse_number']
 output = df
