@@ -20,8 +20,9 @@ rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
 df = pd.DataFrame(rows)
 
 books = df['book'].unique()
+books = books.insert(0, 'All')
 
-book_choice = st.sidebar.multiselect('Book:', list(books).insert(0, 'All').array())
+book_choice = st.sidebar.multiselect('Book:', books)
 chapter = df["chapter"].loc[df["book"].isin([book_choice])].unique()
 chapter_choice = st.sidebar.multiselect('Chapter', chapter)
 verse_number = df["verse_number"].loc[df["chapter"].isin([chapter_choice])].unique()
