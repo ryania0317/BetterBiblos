@@ -26,6 +26,7 @@ books=np.insert(books,0,'All')
 #books = books.insert(0, 'All')
 
 book_choice = st.sidebar.multiselect('Book:', books, default='All')
+book_choice = [all_books for all_books in all_books if 'All' in book_choice]
 chapter = df["chapter"].loc[df["book"].isin([book_choice])].unique()
 chapter = np.where('All' in any(books for books in book_choice),all_books,df["chapter"].loc[df["book"].isin([book_choice])].unique())
 chapter_choice = st.sidebar.multiselect('Chapter', chapter, default='All')
