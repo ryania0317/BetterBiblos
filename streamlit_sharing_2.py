@@ -57,7 +57,7 @@ output = df.loc[book_filter & chapter_filter & verse_filter]
 
 
 st.write(book_choice)
-st.write(type(book_choice))
+st.write(book_filter)
 st.write(chapter_choice)
 st.write(type(chapter_choice))
 st.write(verse_number_choice)
