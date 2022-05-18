@@ -52,7 +52,7 @@ book_filter = df['book'].isin(book_choice)
 #chapter_filter = df['chapter'].isin([np.vectorize(np.int(item)) for item in list(chapter_choice)])
 chapter_filter = df['chapter'].isin([item.astype(int) for item in chapter_choice])
 #chapter_filter = df['chapter'].isin([1])
-verse_filter = df['verse_number'].isin([np.vectorize(np.int(item)) for item in verse_number_choice])
+verse_filter = df['verse_number'].isin([item.astype(int) for item in verse_number_choice])
 
 output = df.loc[book_filter & chapter_filter & verse_filter]
 
