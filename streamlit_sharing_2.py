@@ -47,11 +47,14 @@ verse_number_choice = [verse_number if 'All' in verse_number_choice else verse_n
 #verse_number_choice = [all_verses for all_verses in verse_number if 'All' in verse_number_choice]
 
 
-output = df.loc[(df['book'].isin(book_choice.values)) & (df['chapter'].isin(chapter_choice.values)) & (df['verse_number'].isin(verse_number_choice.values))]
+output = df.loc[(df['book'].isin(book_choice)) & (df['chapter'].isin(chapter_choice)) & (df['verse_number'].isin(verse_number_choice))]
 
 
 st.write(book_choice)
+st.write(type(book_choice))
 st.write(chapter_choice)
+st.write(type(chapter_choice))
 st.write(verse_number_choice)
+st.write(type(verse_number_choice))
 
 st.write('Results:', output)
