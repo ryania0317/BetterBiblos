@@ -37,14 +37,14 @@ chapter = df["chapter"].loc[df["book"].isin(book_choice)].unique()
 chapter = df["chapter"].unique()
 chapter_all=np.insert(chapter.astype(str),0,'All')
 chapter_choice = st.sidebar.multiselect('Chapter', chapter_all, default='All')
-chapter_choice = [chapter if 'All' in chapter_choice else chapter_choice for chapter_choice in chapter_choice]
+chapter_choice = [chapter if "All" in chapter_choice else chapter_choice for chapter_choice in chapter_choice]
 #chapter_choice = [all_chapters for all_chapters in chapter if 'All' in chapter_choice]
 
 verse_number = df["verse_number"].loc[df["chapter"].isin([chapter_choice]) & df["book"].isin([book_choice])].unique()
 verse_number = df["verse_number"].unique()
 verse_number_all=np.insert(verse_number.astype(str),0,'All')
 verse_number_choice = st.sidebar.multiselect('Verse', verse_number_all, default='All')
-verse_number_choice = [verse_number if 'All' in verse_number_choice else verse_number_choice for verse_number_choice in verse_number_choice]
+verse_number_choice = [verse_number if "All" in verse_number_choice else verse_number_choice for verse_number_choice in verse_number_choice]
 verse_number_choice = [list(itertools.chain(*verse_number)) if 'All' in verse_number_choice else verse_number_choice for verse_number_choice in verse_number_choice]
 #verse_number_choice = [all_verses for all_verses in verse_number if 'All' in verse_number_choice]
 
