@@ -39,7 +39,7 @@ chapter = df["chapter"].unique()
 st.write(chapter)
 chapter_all=np.insert(chapter.astype(str),0,'All')
 chapter_choice = st.sidebar.multiselect('Chapter', chapter_all, default='All')
-chapter_choice = [chapter if 'All' in chapter_choice else chapter_choice for chapter in chapter]
+chapter_choice = [chapter if 'All' in chapter_choice else chapter_choice for chapter_choice in chapter_choice]
 #chapter_choice = [all_chapters for all_chapters in chapter if 'All' in chapter_choice]
 
 verse_number = df["verse_number"].loc[df["chapter"].isin([chapter_choice]) & df["book"].isin([book_choice])].unique()
