@@ -22,7 +22,7 @@ conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
 df = pd.DataFrame(rows)
 df = df.astype(str)
-df[['chapter','verse_number']] = df[['chapter','verse_number']].astype(int)
+df[['chapter','verse_number']] = df[['chapter','verse_number']].astype(float).astype(int)
 
 books = df['book'].unique()
 all_books = books
