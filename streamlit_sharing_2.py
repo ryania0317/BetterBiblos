@@ -49,8 +49,8 @@ verse_number_choice = [list(itertools.chain(*verse_number)) if 'All' in verse_nu
 #verse_number_choice = [all_verses for all_verses in verse_number if 'All' in verse_number_choice]
 
 book_filter = df['book'].isin(book_choice)
-chapter_filter = df['chapter'].isin[chapter_choice]
-verse_filter = df['verse_number'].isin[verse_number_choice]
+chapter_filter = df['chapter'].isin(list(chapter_choice))
+verse_filter = df['verse_number'].isin(list(verse_number_choice))
 
 output = df.loc[book_filter & chapter_filter & verse_filter]
 
