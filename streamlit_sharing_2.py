@@ -47,7 +47,7 @@ verse_number_choice = [verse_number if 'All' in verse_number_choice else verse_n
 #verse_number_choice = [all_verses for all_verses in verse_number if 'All' in verse_number_choice]
 
 
-output = df.loc[df.book.isin(book_choice) and df.chapter.isin(chapter_choice) and df.verse_number.isin(verse_number_choice)]
+output = df.loc[df.book.isin(book_choice) & df.chapter.isin(chapter_choice) & df.verse_number.isin(verse_number_choice)]
 
 
 st.write(book_choice)
