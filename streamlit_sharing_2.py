@@ -31,11 +31,9 @@ book_choice = st.sidebar.multiselect('Book:', books, default='All')
 book_choice = [all_books if 'All' in book_choice else book_choice for all_books in book_choice]
 book_choice = (book_choice)
 
-st.write(book_choice)
 chapter = df["chapter"].loc[df["book"].isin(book_choice)].unique()
 chapter = df["chapter"].unique()
 chapter_all=np.insert(chapter.astype(str),0,'All')
-#st.write(chapter)
 chapter_choice = st.sidebar.multiselect('Chapter', chapter_all, default='All')
 chapter_choice = [all_chapters if 'All' in chapter_choice else chapter_choice for all_chapters in chapter]
 #chapter_choice = [all_chapters for all_chapters in chapter if 'All' in chapter_choice]
@@ -51,8 +49,8 @@ verse_number_choice = [all_verses if 'All' in verse_number_choice else verse_num
 output = df.loc[(df['book'].isin([book_choice])) & (df['chapter'].isin([chapter_choice])) & (df['verse_number'].isin([verse_number_choice]))]
 
 
-#st.write(book_choice)
-#st.write(chapter_choice)
-#st.write(verse_number_choice)
+st.write(book_choice)
+st.write(chapter_choice)
+st.write(verse_number_choice)
 
 st.write('Results:', output)
