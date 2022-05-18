@@ -58,3 +58,5 @@ st.write(verse_number_choice)
 st.write(type(verse_number_choice))
 
 st.write('Results:', output)
+
+st.write(df)
