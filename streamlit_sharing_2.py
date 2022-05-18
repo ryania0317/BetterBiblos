@@ -65,3 +65,4 @@ st.write(verse_filter)
 st.write('Results:', output)
 
 st.write(df)
+st.write(df['chapter'].unique())
