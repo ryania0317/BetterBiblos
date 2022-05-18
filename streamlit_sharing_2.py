@@ -21,7 +21,7 @@ gsheet_url = "https://docs.google.com/spreadsheets/d/1pjYzEl-Wlr2X40ECZwesX0_pax
 conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
 df = pd.DataFrame(rows)
-df = df.astype(str)
+#df = df.astype(str)
 df[['chapter','verse_number']] = df[['chapter','verse_number']].astype(float).astype(int)
 
 books = df['book'].unique()
