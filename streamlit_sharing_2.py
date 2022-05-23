@@ -27,8 +27,6 @@ books = df['book'].unique()
 all_books = books
 books=np.insert(books,0,'All')
 
-#st.write(list(all_books))
-
 book_choice = st.sidebar.multiselect('Book:', books, default='All')
 book_choice = [all_books if "All" in book_choice else book_choice for book_choice in book_choice]
 book_choice = [item for sublist in book_choice for item in sublist]
@@ -45,8 +43,7 @@ verse_number = df["verse_number"].unique()
 verse_number_all=np.insert(verse_number.astype(str),0,'All')
 verse_number_choice = st.sidebar.multiselect('Verse', verse_number_all, default='All')
 verse_number_choice = [verse_number if "All" in verse_number_choice else verse_number_choice for verse_number_choice in verse_number_choice]
-#verse_number_choice = [list(itertools.chain(*verse_number)) if 'All' in verse_number_choice else verse_number_choice for verse_number_choice in verse_number_choice]
-#verse_number_choice = [all_verses for all_verses in verse_number if 'All' in verse_number_choice]
+verse_number_choice = [item for sublist in verse_number_choice for item in sublist]
 
 book_filter = df['book'].isin(book_choice)
 #chapter_filter = df['chapter'].isin([np.vectorize(np.int(item)) for item in list(chapter_choice)])
