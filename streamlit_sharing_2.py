@@ -47,7 +47,7 @@ verse_number_choice = [item for sublist in verse_number_choice for item in subli
 
 book_filter = df['book'].isin(book_choice)
 #chapter_filter = df['chapter'].isin([np.vectorize(np.int(item)) for item in list(chapter_choice)])
-chapter_filter = df['chapter'].isin([item.astype(int) for item in chapter_choice])
+chapter_filter = df['chapter'].isin([int(item) for item in chapter_choice])
 #chapter_filter = df['chapter'].isin([1])
 verse_filter = df['verse_number'].isin([item.astype(int) for item in verse_number_choice])
 
