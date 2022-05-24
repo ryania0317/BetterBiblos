@@ -31,7 +31,7 @@ df = pd.DataFrame(rows)
 df[['chapter','verse_number']] = df[['chapter','verse_number']].astype(float).astype(int)
 
 books = df['book'].unique()
-all_books = books
+all_books = list(books)
 books=np.insert(books,0,'All')
 
 book_choice = st.sidebar.multiselect('Book:', books, default='All')
