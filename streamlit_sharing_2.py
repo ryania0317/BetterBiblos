@@ -35,7 +35,8 @@ all_books = list(books)
 books=np.insert(books,0,'All')
 
 book_choice = st.sidebar.multiselect('Book:', books, default='All')
-book_choice = [flatten(all_books) if "All" in book_choice else book_choice for book_choice in book_choice]
+book_choice = [all_books if "All" in book_choice else book_choice for book_choice in book_choice]
+book_choice = flatten(book_choice)
 
 st.write(book_choice)
 #book_choice = [flatten(sublist) for sublist in book_choice]
