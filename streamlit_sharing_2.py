@@ -61,8 +61,8 @@ verse_filter = df['verse_number'].isin([int(item) for item in verse_number_choic
 output = df.loc[book_filter & chapter_filter & verse_filter]
 
 
-#st.write(book_choice)
-#st.write(book_filter)
+st.write(book_choice)
+st.write(book_filter)
 #st.write(chapter_choice)
 #st.write(chapter_filter)
 #st.write(verse_number_choice)
