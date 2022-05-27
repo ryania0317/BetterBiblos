@@ -20,7 +20,7 @@ def flatten(list_of_lists):
 install_and_import('streamlit')
 #import streamlit as st
 
-st.title("KJV Bible")
+streamlit.title("KJV Bible")
 gsheet_url = "https://docs.google.com/spreadsheets/d/1pjYzEl-Wlr2X40ECZwesX0_paxLTyssNKFjm1rHbR0U/edit?usp=sharing"
 conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
