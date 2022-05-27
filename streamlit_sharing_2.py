@@ -16,14 +16,8 @@ def flatten(list_of_lists):
         return flatten(list_of_lists[0]) + flatten(list_of_lists[1:])
     return list_of_lists[:1] + flatten(list_of_lists[1:])
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-from gsheetsdb import connect
-import itertools
 
 st.title("KJV Bible")
-st.write("Prototype Under Construction")
 gsheet_url = "https://docs.google.com/spreadsheets/d/1pjYzEl-Wlr2X40ECZwesX0_paxLTyssNKFjm1rHbR0U/edit?usp=sharing"
 conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
@@ -31,20 +25,14 @@ df = pd.DataFrame(rows)
 df = df[['book','chapter','verse_number','verse']]
 df[['chapter','verse_number']] = df[['chapter','verse_number']].astype(float).astype(int)
 
-container = st.container()
-
-
-
 books = df['book'].unique()
 all_books = list(books)
 books=np.insert(books,0,'All')
 
 col1, col2, col3 = st.columns(3)
-#col1, col2 = st.columns([3, 1])
 
 with col1:
     book_choice = st.multiselect('Book:', books, default='All')
-    # book_choice = container.multiselect('Book:', books, default='All')
     book_choice = [all_books if "All" in book_choice else book_choice for book_choice in book_choice]
     book_choice = flatten(book_choice)
 with col2:
@@ -52,7 +40,6 @@ with col2:
     chapter = df["chapter"].unique()
     chapter_all = np.insert(chapter.astype(str), 0, 'All')
     chapter_choice = st.multiselect('Chapter', chapter_all, default='All')
-    # chapter_choice = container.multiselect('Chapter', chapter_all, default='All')
     chapter_choice = [chapter if "All" in chapter_choice else chapter_choice for chapter_choice in chapter_choice]
     chapter_choice = [item for sublist in chapter_choice for item in sublist]
 with col3:
@@ -60,36 +47,13 @@ with col3:
     verse_number = df["verse_number"].unique()
     verse_number_all = np.insert(verse_number.astype(str), 0, 'All')
     verse_number_choice = st.multiselect('Verse', verse_number_all, default='All')
-    # verse_number_choice = container.multiselect('Verse', verse_number_all, default='All')
     verse_number_choice = [verse_number if "All" in verse_number_choice else verse_number_choice for verse_number_choice in verse_number_choice]
     verse_number_choice = [item for sublist in verse_number_choice for item in sublist]
 
-
-#book_choice = [flatten(sublist) for sublist in book_choice]
-#book_choice = list(itertools.chain(*book_choice))
-
-
-
-
-
-
-
 book_filter = df['book'].isin(book_choice)
-#chapter_filter = df['chapter'].isin([np.vectorize(np.int(item)) for item in list(chapter_choice)])
 chapter_filter = df['chapter'].isin([int(item) for item in chapter_choice])
-#chapter_filter = df['chapter'].isin([1])
 verse_filter = df['verse_number'].isin([int(item) for item in verse_number_choice])
 
 output = df.loc[book_filter & chapter_filter & verse_filter]
 
-
-#st.write(book_choice)
-#st.write(book_filter)
-#st.write(chapter_choice)
-#st.write(chapter_filter)
-#st.write(verse_number_choice)
-#st.write(verse_filter)
-
 st.write('Results:', output)
-
-#st.write(df)
