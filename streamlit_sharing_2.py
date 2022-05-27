@@ -30,11 +30,13 @@ rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
 df = pd.DataFrame(rows)
 df[['chapter','verse_number']] = df[['chapter','verse_number']].astype(float).astype(int)
 
+container = st.container()
+
 books = df['book'].unique()
 all_books = list(books)
 books=np.insert(books,0,'All')
 
-book_choice = st.multiselect('Book:', books, default='All')
+book_choice = container.st.multiselect('Book:', books, default='All')
 book_choice = [all_books if "All" in book_choice else book_choice for book_choice in book_choice]
 book_choice = flatten(book_choice)
 
@@ -44,7 +46,7 @@ book_choice = flatten(book_choice)
 chapter = df["chapter"].loc[df["book"].isin(book_choice)].unique()
 chapter = df["chapter"].unique()
 chapter_all=np.insert(chapter.astype(str),0,'All')
-chapter_choice = st.multiselect('Chapter', chapter_all, default='All')
+chapter_choice = container.st.multiselect('Chapter', chapter_all, default='All')
 chapter_choice = [chapter if "All" in chapter_choice else chapter_choice for chapter_choice in chapter_choice]
 chapter_choice = [item for sublist in chapter_choice for item in sublist]
 
