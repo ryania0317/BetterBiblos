@@ -22,7 +22,7 @@ import numpy as np
 from gsheetsdb import connect
 import itertools
 
-st.title("KJV Bible")
+#st.title("KJV Bible")
 gsheet_url = "https://docs.google.com/spreadsheets/d/1pjYzEl-Wlr2X40ECZwesX0_paxLTyssNKFjm1rHbR0U/edit?usp=sharing"
 conn = connect()
 rows = conn.execute(f'SELECT * FROM "{gsheet_url}"')
